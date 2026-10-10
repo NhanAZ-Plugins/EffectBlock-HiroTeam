@@ -1,5 +1,8 @@
+# Updated by NhanAZ in 2026 for Axolotl-PM API 5 compatibility.
 name: BlockEffect-HiroTeam
 author: HiroTeam
-version: 1.0.1
+version: 1.0.2
 api: 5.0.0
 main: HiroTeam\blockEffect\BlockEffect
+description: Apply configured effects when players step on selected blocks
+website: https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam

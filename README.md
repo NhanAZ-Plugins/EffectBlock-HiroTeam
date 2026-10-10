@@ -1,48 +1,40 @@
 # EffectBlock-HiroTeam
-![EffectBlock](https://zupimages.net/up/20/24/4988.png)
----
-### About
-[ENG] This is a [PocketMine-MP](https://github.com/pmmp/PocketMine-MP) (or forks) Very useful to make your friends fall into traps ! FULL CONFIG :grin:<br/><br/>
-[FRA] C'est un [PocketMine-MP](https://github.com/pmmp/PocketMine-MP) Très utile pour faire tomber vos amis dans des pièges ! FULL CONFIG :grin:
 
----
-### How to use
-[ENG] Configure the block and the effect you want to apply to it in config.yml! You can add as many as you want !</br>
+EffectBlock-HiroTeam applies configured potion effects when a player walks over selected blocks. The plugin was created by HiroTeam. This fork keeps the HiroTeam name and the existing Apache-2.0 license.
 
-[FRA] Configurer dans le config.yml le bloc et l'effet que vous souhaitez lui appliquer ! Vous avez la possibilité d'en ajouter autant que vous le souhaitez !</br>
+En français, le plugin applique les effets configurés aux joueurs qui marchent sur les blocs choisis. Le nom HiroTeam et la licence Apache-2.0 sont conservés.
 
-##### Here is the video:
-- BlockEffect Pocketmine plugin in [Youtube](https://www.youtube.com/watch?v=3ZpKVyi6JRw) !
----
-### **This plugin was tested (and works) on:**
+## Requirements and compatibility
 
-- [x] **[PocketMine-MP](https://github.com/pmmp/PocketMine-MP)**
----
-### **LordHosting Partner**
+- Requires Axolotl-PM API 5.0.0 and the PHP version required by that server. The exact source revisions used for automated verification are pinned in the [build workflow](.github/workflows/build.yml). Compatibility with every intermediate 5.x release has not been established.
+- No external plugin dependency is required.
+- Existing numeric block ID and metadata rules are converted with Axolotl-PM's block state upgrader. A legacy ID that cannot be mapped is skipped with a warning.
 
-- [ENG] Our team is in partnership with Lordhosting, Minecraft PE server Hosting, VPS hosting use reduction code __**HIROTEAM**__ 10% FREE </br>
--> Website : https://clients.lordhosting.fr </br>
--> Discord : https://discord.gg/rRss47k </br>
+## Installation
 
-- [FRA] Notre équipe est en partenariat avec Lordhosting, hébergement de serveurs Minecraft PE, VPS utilise le code de réduction __**HIROTEAM**__ 10% DE REDUCTION </br>
--> Site Web: https://clients.lordhosting.fr </br>
--> Discord : https://discord.gg/rRss47k </br>
----
-### Contacts HiroTeam
+Download the verified PHAR from [GitHub Releases](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/releases), copy it into your server's `plugins` directory, and restart the server. The default `config.yml` is copied to the plugin's data directory on first startup.
 
-- **Discord Member:** WillyDuGang#6947 RomainSav#9558
-- **Discord Server:** :link:  https://discord.gg/WuwsuUA<br/>
-- **E-mail:** team.hiroshima.dev@gmail.com<br/>
-- **Our PocketMine Server** :link:  https://hirovote.eu<br/>
+## Configuration
 
-> ![HiroTeam](https://zupimages.net/up/20/25/mb59.png) </br>
-> ![HiroTeam](https://cdn.discordapp.com/attachments/701520774598492220/723269120992215080/PicsArt_06-18-10.13.13.png)
----
-### License
-HiroshimaTeam/EffectBlock-HiroTeam is licensed under the
+Each rule has a unique name, a legacy block ID and metadata pair, an effect ID, a duration in seconds, an amplifier, and a visibility setting. The default configuration includes stone and sand.
 
-> Apache License 2.0
->A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express > grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
----
-### Author
-- **Discord:** RomainSav#9558
+```yaml
+Stone:
+  block: "1:0"
+  effect: "19:20:0"
+  visible: "true"
+```
+
+In this example, `1:0` is the legacy block ID and metadata. The effect value `19:20:0` means effect ID 19 for 20 seconds with amplifier 0, which is level I. `visible` controls particles. Use `true` or `false`. Changes take effect after restart.
+
+Rules with malformed values, unknown effect IDs, unsupported legacy blocks, or durations outside the supported range are ignored and logged. Valid rules continue to work. A configured effect is applied when the destination position is above a matching block. The plugin has no commands or permissions.
+
+## Build and verification
+
+The [workflow](.github/workflows/build.yml) tests event behavior, runs PHPStan at maximum level, and uses [DevTools](https://github.com/NhanAZ/DevTools) to build and inspect a PHAR. The workflow pins its tools and server source to reviewed revisions and provides a downloadable build artifact. A new stable release is published only after the release checks pass.
+
+To run the event fixture locally, install the Axolotl-PM dependencies and run `php tests/block-effect.php /path/to/Axolotl-PM`. The isolated server test confirms startup and rule loading. A connected player walking over the configured blocks has not been tested in this maintenance campaign.
+
+## Credits and license
+
+HiroTeam created the original [EffectBlock-HiroTeam](https://github.com/HiroshimaTeam/EffectBlock-HiroTeam), including its bilingual documentation and community links. The original README remains in Git history for the historical video, images, and hosting partnership information. NhanAZ updated this fork in 2026 for Axolotl-PM API 5, with modification notices in the source and manifest. The [Apache License 2.0](LICENSE) text is retained. Report current issues in [GitHub Issues](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/issues).

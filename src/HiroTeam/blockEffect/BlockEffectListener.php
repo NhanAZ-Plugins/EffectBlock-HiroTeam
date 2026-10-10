@@ -1,33 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HiroTeam\blockEffect;
 
-use HiroTeam\blockEffect\BlockEffect;
-use pocketmine\data\bedrock\EffectIdMap;
-use pocketmine\entity\effect\EffectInstance;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 
+// Modified by NhanAZ in 2026 to match API 5 block states.
 class BlockEffectListener implements Listener {
+	public function __construct(private BlockEffect $main){}
 
-	private BlockEffect $main;
-
-	public function __construct(BlockEffect $main) {
-		$this->main = $main;
-	}
-
-	public function onBlock(PlayerMoveEvent $event) {
+	public function onBlock(PlayerMoveEvent $event) : void{
 		$player = $event->getPlayer();
-		foreach ($this->main->getConfig()->getAll() as $item => $parametre) {
-			$poisonBlock = $parametre['block'];
-			$block = $player->getWorld()->getBlock($event->getPlayer()->getPosition()->down());
-			$effect = $parametre['effect'];
-			$effect = explode(":", $effect);
-			$minute = $effect[1] * 20;
-			if ($poisonBlock == $block->getId() . ":" . $block->getMeta()) {
-				$potionEffect = new EffectInstance(EffectIdMap::getInstance()->fromId((int)$effect[0]), $minute, $effect[2], $parametre['visible']);
-				$player->getEffects()->add($potionEffect);
-			}
+		$stateId = $player->getWorld()->getBlock($event->getTo()->down())->getStateId();
+		foreach($this->main->getRulesForStateId($stateId) as $effect){
+			$player->getEffects()->add(clone $effect);
 		}
 	}
 }
