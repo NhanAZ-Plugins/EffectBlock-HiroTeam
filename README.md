@@ -1,8 +1,15 @@
 # EffectBlock-HiroTeam
 
-EffectBlock-HiroTeam applies configured potion effects when a player walks over selected blocks. The plugin was created by HiroTeam. This fork keeps the HiroTeam name and the existing Apache-2.0 license.
+Apply HiroTeam block effects from legacy ID rules on Axolotl-PM
 
-En français, le plugin applique les effets configurés aux joueurs qui marchent sur les blocs choisis. Le nom HiroTeam et la licence Apache-2.0 sont conservés.
+[![CI](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/actions/workflows/build.yml/badge.svg)](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/NhanAZ-Plugins/EffectBlock-HiroTeam)](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/releases/latest)
+[![License](https://img.shields.io/github/license/NhanAZ-Plugins/EffectBlock-HiroTeam)](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/blob/master/LICENSE)
+[![Discord](https://img.shields.io/discord/986553214889517088?label=Discord&logo=discord&logoColor=white&color=5865F2)](https://discord.gg/j2X83ujT6c)
+
+## Overview
+
+This is an experimental repository. Review its documented limitations before using it on a live server.
 
 ## Requirements and compatibility
 
