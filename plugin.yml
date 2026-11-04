@@ -1,6 +1,6 @@
 # Updated by NhanAZ in 2026 for Axolotl-PM API 5 compatibility.
 name: BlockEffect-HiroTeam
-author: HiroTeam
+authors: ["NhanAZ", "HiroTeam"]
 version: 1.0.2
 api: 5.0.0
 main: HiroTeam\blockEffect\BlockEffect
