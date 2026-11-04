@@ -42,3 +42,8 @@ To run the event fixture locally, install the Axolotl-PM dependencies and run `p
 ## Credits and license
 
 HiroTeam created the original [EffectBlock-HiroTeam](https://github.com/HiroshimaTeam/EffectBlock-HiroTeam), including its bilingual documentation and community links. The original README remains in Git history for the historical video, images, and hosting partnership information. NhanAZ updated this fork in 2026 for Axolotl-PM API 5, with modification notices in the source and manifest. The [Apache License 2.0](LICENSE) text is retained. Report current issues in [GitHub Issues](https://github.com/NhanAZ-Plugins/EffectBlock-HiroTeam/issues).
+
+
+## Credits
+
+Authors: NhanAZ, HiroTeam.
